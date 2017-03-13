@@ -1,14 +1,19 @@
+var arrayArticles = [];
+var arrHeaders = ["dmngbgr01.thoughtworks.com          |<span>idle          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent",
+                  "dmngbgr02.thoughtworks.com          |<span>idle          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent",
+                  "dmngbgr03.thoughtworks.com          |<span>idle          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent"];
+
 function addArticle(){
-    var parent = document.getElementById("content");
+    var sectionContent = document.getElementById("content");
     var article = document.createElement("article");
-    var p1 = document.createElement("p");
-    p1.innerHTML = "<h4>bjsdmngbgr01.thoughtworks.com          |<span>idle          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent</h4>"
-    var p2 = document.createElement("p");
-    p2.innerHTML="+";
-    p2.id="p2";
+    var headerArticle = document.createElement("h4");
+    headerArticle.innerHTML = arrHeaders[arrayArticles.length];
+    var contentArticle = document.createElement("p");
+    contentArticle.innerHTML="+";
+    contentArticle.id="p2";
     var a2 = document.createElement("a");
     a2.innerHTML="Specify Resources";
-    p2.appendChild(a2);
+    contentArticle.appendChild(a2);
     a2.addEventListener("click", function(e){
       e.preventDefault();
       var z = prompt("¿Que desea agregar?");
@@ -29,15 +34,15 @@ function addArticle(){
           padre.removeChild(document.getElementById(idParent));
         });
         span.innerHTML = e;
-        p2.appendChild(span);
+        contentArticle.appendChild(span);
         span.appendChild(aRemove);
       })
 
     })
 
-    article.appendChild(p1);
-    article.appendChild(p2);
-    parent.appendChild(article);
+    article.appendChild(headerArticle);
+    article.appendChild(contentArticle);
+    sectionContent.appendChild(article);
 }
 
 
