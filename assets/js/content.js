@@ -43,7 +43,9 @@ function addArticle(){
     article.appendChild(headerArticle);
     article.appendChild(contentArticle);
     sectionContent.appendChild(article);
+    arrayArticles.push(article);
 }
 
-
-addArticle();
+arrHeaders.forEach(function(e) {
+  addArticle();
+})
