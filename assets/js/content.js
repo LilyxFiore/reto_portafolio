@@ -1,56 +1,74 @@
-var arrayArticles = [];
-var arrHeaders = ["dmngbgr01.thoughtworks.com          |<span>idle          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent",
-                  "dmngbgr02.thoughtworks.com          |<span>idle          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent",
-                  "dmngbgr03.thoughtworks.com          |<span>idle          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent"];
+var arrHeaders = ["dmngbgr00.thoughtworks.com          |<span>ide          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent",
+                  "dmngbgr01.thoughtworks.com          |<span>building          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent",
+                  "dmngbgr02.thoughtworks.com          |<span>building          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent",
+                  "dmngbgr03.thoughtworks.com          |<span>ide          |</span><span>192.168.0.1    |</span>        var/lib/cruise-agent"];
 
-function addArticle(){
-    var count = arrayArticles.length;
-    var sectionContent = document.getElementById("content");
+arrHeaders.forEach(function(e,i) {
+  var color;
+  if(i==0 || i == 3){
+    color = "green";
+  }
+  else{
+    color = "yellow";
+  }
+  addArticle(i,color);
+})
+
+function addArticle(index,color){
+    var sectionLeft = document.getElementById("left");
+    sectionLeft.setAttribute("class","left");
+
+    var sectionContent = document.createElement("section");
+    sectionContent.setAttribute("class", 'content-left '+color);
     var article = document.createElement("article");
+    var circle = document.createElement("aside");
+    circle.setAttribute("class","circle");
     var headerArticle = document.createElement("h4");
-    headerArticle.innerHTML = arrHeaders[count];
+    headerArticle.innerHTML = arrHeaders[index];
+
     var contentArticle = document.createElement("p");
     contentArticle.innerHTML="+";
-    contentArticle.id="c"+count;
+    var aSpecify = document.createElement("a");
+    aSpecify.href="#";
+    aSpecify.innerHTML="Specify Resources";
+    contentArticle.appendChild(aSpecify);
+    var tXtResource = document.createElement("span");
+    tXtResource.innerHTML = "| Resources";
+    contentArticle.appendChild(tXtResource);
 
-    var addResource = document.createElement("a");
-    addResource.innerHTML="Specify Resources";
-
-    contentArticle.appendChild(addResource);
-
-    addResource.addEventListener("click", function(e){
+    aSpecify.addEventListener("click", function(e){
       e.preventDefault();
-
-      var texto = prompt("¿Que desea agregar?");
-
-      var arrayTexto = texto.split(",");
-
-      arrayTexto.forEach(function(e,i){
-        var span = document.createElement("span");
-        span.id="s"+i+count;
-        var aRemove = document.createElement("a");
-        aRemove.href="#";
-        aRemove.setAttribute("class",'glyphicon glyphicon-remove-circle');
-        aRemove.addEventListener('click',function(e) {
-          e.preventDefault();
-          var padre = e.target.parentNode.parentNode;
-          var idParent = e.target.parentNode.id;
-          console.log(padre);
-          padre.removeChild(document.getElementById(idParent));
-        });
-        span.innerHTML = e;
-        contentArticle.appendChild(span);
-        span.appendChild(aRemove);
-      })
-
+      addResource(contentArticle);
     })
-
     article.appendChild(headerArticle);
     article.appendChild(contentArticle);
+    sectionContent.appendChild(circle);
     sectionContent.appendChild(article);
-    arrayArticles.push(article);
+    sectionLeft.appendChild(sectionContent)
 }
 
-arrHeaders.forEach(function(e) {
-  addArticle();
-})
+function addResource(contentArticle){
+  var texto = prompt("¿Qué desea agregar?");
+  var arrayTexto = texto.split(",");
+  arrayTexto.forEach(function(e,i){
+    if(e != ""){
+      var span = document.createElement("span");
+      var aRemove = document.createElement("a");
+      aRemove.setAttribute("class","remove");
+      aRemove.innerHTML = "x";
+
+      aRemove.addEventListener('click',function(e) {
+        e.preventDefault();
+        deleteResource(contentArticle,span);
+      });
+      
+      span.innerHTML = e;
+      contentArticle.appendChild(span);
+      span.appendChild(aRemove);
+    }
+  })
+}
+
+function deleteResource(contentArticle,span){
+  contentArticle.removeChild(span);
+}
