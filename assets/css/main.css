@@ -98,3 +98,20 @@ a{ color: #3597c8; }
   margin-bottom: -10px;
   margin-left: 10px;
 }
+
+/*popup for add Text of Resources*/
+.tool-tip {
+ width: 500px;
+ background: #E0ECF8 center left 5px no-repeat;
+ border: 2px solid black ;
+ border-radius: 5px;
+ color: black ;
+ display: none;
+ font-size: 0.8em;
+ padding: 10px 10px 10px 35px;
+ max-width: 6000px;
+ position: absolute;
+ top: 150px;
+ left: 70px;
+ z-index: 100;
+}

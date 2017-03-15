@@ -80,7 +80,46 @@ function addArticle(index,color){
 }
 
 function addResource(contentArticle){
-  var texto = prompt("¿Qué desea agregar?");
+  // var texto = prompt("¿Qué desea agregar?");
+  var popUp = document.createElement("div");
+  popUp.setAttribute("class","tool-tip");
+
+  var sPopUp = document.createElement("span");
+  sPopUp.innerHTML = "(Separate multiple resources name with commas) </br>";
+  popUp.appendChild(sPopUp);
+
+  var iPopUp = document.createElement("input");
+  iPopUp.setAttribute("id","popUpText");
+  iPopUp.setAttribute("type","text");
+  iPopUp.style.width = "470px";
+  iPopUp.innerHTML = "</br>";
+  popUp.appendChild(iPopUp);
+
+  var addButtonResource = document.createElement("button");
+  addButtonResource.setAttribute("id","add");
+  addButtonResource.setAttribute("type","button");
+  addButtonResource.innerHTML= "Add resources";
+  popUp.appendChild(addButtonResource);
+
+  var closePopUp = document.createElement("button");
+  closePopUp.setAttribute("id","close");
+  closePopUp.setAttribute("type","button");
+  closePopUp.innerHTML= "Close";
+  popUp.appendChild(closePopUp);
+
+  addButtonResource.addEventListener('click',function(e){
+      e.preventDefault();
+      var ventana = document.getElementsByClassName("tool-tip");
+      ventana[0].style.display = "block";
+      var texto = document.getElementById("popUpText").value;
+  });
+
+  closePopUp.addEventListener('click',function(e){
+      e.preventDefault();
+      var ventana = document.getElementsByClassName("tool-tip");
+      ventana[0].style.display = "none";
+  });
+
   var arrayTexto = texto.split(",");
   arrayTexto.forEach(function(e,i){
     if(e != ""){
