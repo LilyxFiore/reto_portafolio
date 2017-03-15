@@ -16,6 +16,8 @@ body, html{
 	position: relative;
 	padding: 0;
 	margin: 75px auto;
+	height: 40px;
+	padding-left: 25px;
 }
 
 .tab li{
@@ -23,37 +25,44 @@ body, html{
 	width: auto;
 }
 
-
 .tab label{
 	display: block;
+	height: 14px;
 	padding: 10px 20px;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	font-weight: bold;
 	border: 2px solid #000;
 	text-align: center;
-	border-bottom: none;
 	font-size: 14px;
 	background: #fff;
 	cursor: pointer;
 	position: relative;
-	top: 3px;
+	top: 2px;
 	padding: 10px;
 	transition: all 0.2s ease-in-out;
-
+	border-bottom:2px solid #000;
 }
 
 .tab label:hover{
 	background: rgb(96,96,96);
 	color: rgb(255,255,255);
-	top:0;
+	border-bottom:2px solid rgb(96,96,96);
+	top:2px;
 }
 
 .headboards:checked +label{
 	background: rgb(96,96,96);
-	border-bottom: 2px solid #fff;
+	border-bottom: 2px solid rgb(96,96,96);
+	top: 2px;
+	color: rgb(255,255,255);
+	z-index: 1;
+}
+
+.headboards:unchecked +label{
+	background: red;
+	border-bottom: 2px solid red;
 	top: 0;
-	color: #fff;
 }
 
 .headboards:checked ~.content-tab{
@@ -73,12 +82,12 @@ body, html{
 	position: absolute;
 	text-align: left;
 	width: 100%;
-	z-index: 2;
 	animation-duration: 0.5s;
 	border: 2px solid #000;
+	top: 38px;
 }
 
-
+/*
 .button-agent{
 	background: #aaa;
   border: 1px solid #000;
@@ -87,3 +96,4 @@ body, html{
   border-radius: 15px;
   margin-left: 8px;
 }
+*/
