@@ -1,3 +1,8 @@
+*{
+  margin:0;
+  padding:0;
+}
+
 body{
   font-family: 'Open sans', sans-serif;
   font-size: 14px;
@@ -8,6 +13,14 @@ p, h4{
   margin: 0px;
   padding-bottom: 7px;
   margin-left: 40px;
+}
+
+.content-main{
+  width: auto;
+  position: relative;
+  top: 30px;
+  left: 10px;
+
 }
 
 .left{
@@ -61,4 +74,27 @@ a{ color: #3597c8; }
 
 .yellow{
     background-color: #fff854;
+}
+.login{
+  position: absolute;
+  width: auto;
+  height: 100%
+  top: 10px;
+  right: 10px;
+  font-size:12px;
+  font-weight: bold;
+
+}
+
+.login .sign-in a, .login .sign-out a{
+  padding: 0 0;
+  color:  #333;
+  text-decoration: underline;
+}
+
+.title-main{
+  position: absolute;
+  margin-top: -15px;
+  margin-bottom: -10px;
+  margin-left: 10px;
 }

@@ -15,6 +15,36 @@ arrHeaders.forEach(function(e,i) {
 })
 
 function addArticle(index,color){
+    var mainContent = document.getElementsByTagName('main')[0];
+    mainContent.setAttribute("class","content-main");
+
+    var titleMain = document.createElement("h1");
+    titleMain.setAttribute("class","title-main");
+    titleMain.innerHTML="Cruise";
+
+    var headerLogin = document.getElementsByTagName('header')[0];
+    headerLogin.setAttribute("class","header-login");
+    var divLogin = document.createElement("div");
+    divLogin.setAttribute("class","login");
+
+    var spanSignIn = document.createElement('span');
+    spanSignIn.setAttribute("class","sign-in");
+    spanSignIn.innerHTML="Signed in as ";
+    var aSpanSignIn = document.createElement("a");
+    aSpanSignIn.href = "#";
+    aSpanSignIn.innerHTML = "Member";
+    spanSignIn.appendChild(aSpanSignIn);
+    divLogin.appendChild(spanSignIn);
+
+    var spanSignOut = document.createElement('span');
+    spanSignOut.setAttribute("class","sign-out");
+    spanSignOut.innerHTML="&#10137;";
+    var aSpanSignOut = document.createElement("a");
+    aSpanSignOut.href = "#";
+    aSpanSignOut.innerHTML="Sign out";
+    spanSignOut.appendChild(aSpanSignOut);
+    divLogin.appendChild(spanSignOut);
+
     var sectionLeft = document.getElementById("left");
     sectionLeft.setAttribute("class","left");
 
@@ -44,7 +74,9 @@ function addArticle(index,color){
     article.appendChild(contentArticle);
     sectionContent.appendChild(circle);
     sectionContent.appendChild(article);
-    sectionLeft.appendChild(sectionContent)
+    sectionLeft.appendChild(sectionContent);
+    headerLogin.appendChild(divLogin);
+    mainContent.appendChild(titleMain);
 }
 
 function addResource(contentArticle){
@@ -61,7 +93,7 @@ function addResource(contentArticle){
         e.preventDefault();
         deleteResource(contentArticle,span);
       });
-      
+
       span.innerHTML = e;
       contentArticle.appendChild(span);
       span.appendChild(aRemove);
