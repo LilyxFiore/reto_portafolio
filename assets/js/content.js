@@ -53,10 +53,21 @@ function addArticle(index,color){
     contentTabs.appendChild(ulTab);
 
     var liTab1=document.createElement("li");
+    var inputs = 'tab1, tab2, tab3, tab4'.split(',');
+    var nameInputs = 'HELP, AGENTS, MY CRUISE, DASHBOARD'.split(',');
+    for (var i in inputs){
+      var newLi = document.createElement('li');
+      var newInput = document.createElement('input');
+      newInput.setAttribute("id",inputs[i]);
+      newInput.setAttribute("type","radio");
+      newInput.setAttribute("name","tab");
+      newInput.setAttribute("clas","headboards");
+      var newLabel = document.createElement("label");
+      newLabel.setAttribute("for",inputs[i]);
+      newLabel.innerHTML = nameInputs[i];
+      newDivContent = document.createElement("div");
 
-    var inputTab1 = document.createElement("input");
-    inputTab1.setAttribute("")
-
+    }
 
     var sectionLeft = document.getElementById("left");
     sectionLeft.setAttribute("class","left");
