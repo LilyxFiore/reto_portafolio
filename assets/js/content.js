@@ -45,6 +45,19 @@ function addArticle(index,color){
     spanSignOut.appendChild(aSpanSignOut);
     divLogin.appendChild(spanSignOut);
 
+    var contentTabs = document.getElementById('content-tabs');
+    contentTabs.setAttribute("class","content-tas");
+
+    var ulTab = document.createElement("ul");
+    ulTab.setAttribute("class, tab");
+    contentTabs.appendChild(ulTab);
+
+    var liTab1=document.createElement("li");
+
+    var inputTab1 = document.createElement("input");
+    inputTab1.setAttribute("")
+
+
     var sectionLeft = document.getElementById("left");
     sectionLeft.setAttribute("class","left");
 
