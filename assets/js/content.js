@@ -15,59 +15,6 @@ arrHeaders.forEach(function(e,i) {
 })
 
 function addArticle(index,color){
-    var mainContent = document.getElementsByTagName('main')[0];
-    mainContent.setAttribute("class","content-main");
-
-    var titleMain = document.createElement("h1");
-    titleMain.setAttribute("class","title-main");
-    titleMain.innerHTML="Cruise";
-
-    var headerLogin = document.getElementsByTagName('header')[0];
-    headerLogin.setAttribute("class","header-login");
-    var divLogin = document.createElement("div");
-    divLogin.setAttribute("class","login");
-
-    var spanSignIn = document.createElement('span');
-    spanSignIn.setAttribute("class","sign-in");
-    spanSignIn.innerHTML="Signed in as ";
-    var aSpanSignIn = document.createElement("a");
-    aSpanSignIn.href = "#";
-    aSpanSignIn.innerHTML = "Member";
-    spanSignIn.appendChild(aSpanSignIn);
-    divLogin.appendChild(spanSignIn);
-
-    var spanSignOut = document.createElement('span');
-    spanSignOut.setAttribute("class","sign-out");
-    spanSignOut.innerHTML="&#10137;";
-    var aSpanSignOut = document.createElement("a");
-    aSpanSignOut.href = "#";
-    aSpanSignOut.innerHTML="Sign out";
-    spanSignOut.appendChild(aSpanSignOut);
-    divLogin.appendChild(spanSignOut);
-
-    var contentTabs = document.getElementById('content-tabs');
-    contentTabs.setAttribute("class","content-tas");
-
-    var ulTab = document.createElement("ul");
-    ulTab.setAttribute("class, tab");
-    contentTabs.appendChild(ulTab);
-
-    var liTab1=document.createElement("li");
-    var inputs = 'tab1, tab2, tab3, tab4'.split(',');
-    var nameInputs = 'HELP, AGENTS, MY CRUISE, DASHBOARD'.split(',');
-    for (var i in inputs){
-      var newLi = document.createElement('li');
-      var newInput = document.createElement('input');
-      newInput.setAttribute("id",inputs[i]);
-      newInput.setAttribute("type","radio");
-      newInput.setAttribute("name","tab");
-      newInput.setAttribute("clas","headboards");
-      var newLabel = document.createElement("label");
-      newLabel.setAttribute("for",inputs[i]);
-      newLabel.innerHTML = nameInputs[i];
-      newDivContent = document.createElement("div");
-
-    }
 
     var sectionLeft = document.getElementById("left");
     sectionLeft.setAttribute("class","left");
@@ -99,8 +46,6 @@ function addArticle(index,color){
     sectionContent.appendChild(circle);
     sectionContent.appendChild(article);
     sectionLeft.appendChild(sectionContent);
-    headerLogin.appendChild(divLogin);
-    mainContent.appendChild(titleMain);
 }
 
 function addResource(contentArticle){
@@ -119,6 +64,7 @@ function addResource(contentArticle){
   iPopUp.innerHTML = "</br>";
   popUp.appendChild(iPopUp);
 
+  var texto = document.getElementById("popUpText").value;
   var addButtonResource = document.createElement("button");
   addButtonResource.setAttribute("id","add");
   addButtonResource.setAttribute("type","button");
@@ -135,7 +81,6 @@ function addResource(contentArticle){
       e.preventDefault();
       var ventana = document.getElementsByClassName("tool-tip");
       ventana[0].style.display = "block";
-      var texto = document.getElementById("popUpText").value;
   });
 
   closePopUp.addEventListener('click',function(e){

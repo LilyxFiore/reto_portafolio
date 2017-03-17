@@ -1,0 +1,64 @@
+var mainContent = document.getElementsByTagName('main')[0];
+mainContent.setAttribute("class","content-main");
+
+var titleMain = document.createElement("h1");
+titleMain.setAttribute("class","title-main");
+titleMain.innerHTML="Cruise";
+
+var headerLogin = document.getElementsByTagName('header')[0];
+headerLogin.setAttribute("class","header-login");
+var divLogin = document.createElement("div");
+divLogin.setAttribute("class","login");
+
+var spanSignIn = document.createElement('span');
+spanSignIn.setAttribute("class","sign-in");
+spanSignIn.innerHTML="Signed in as ";
+var aSpanSignIn = document.createElement("a");
+aSpanSignIn.href = "#";
+aSpanSignIn.innerHTML = "Member";
+spanSignIn.appendChild(aSpanSignIn);
+divLogin.appendChild(spanSignIn);
+
+var spanSignOut = document.createElement('span');
+spanSignOut.setAttribute("class","sign-out");
+spanSignOut.innerHTML="&#10137;";
+var aSpanSignOut = document.createElement("a");
+aSpanSignOut.href = "#";
+aSpanSignOut.innerHTML="Sign out";
+spanSignOut.appendChild(aSpanSignOut);
+divLogin.appendChild(spanSignOut);
+
+var contentTabs = document.getElementById('content-tabs');
+
+var ulTab = document.createElement("ul");
+ulTab.setAttribute("class", "tab");
+
+
+var inputs = 'tab1, tab2, tab3, tab4'.split(',');
+var nameInputs = 'HELP, AGENTS, MY CRUISE, DASHBOARD'.split(',');
+for (var i in inputs){
+  var newLi = document.createElement('li');
+
+  var newInput = document.createElement('input');
+  newInput.setAttribute("id",inputs[i]);
+  newInput.setAttribute("type","radio");
+  newInput.setAttribute("name","tab");
+  newInput.setAttribute("class","headboards");
+
+  var newLabel = document.createElement("label");
+  newLabel.setAttribute("for",inputs[i]);
+  newLabel.innerHTML = nameInputs[i];
+
+  newDivContent = document.createElement("div");
+  newDivContent.setAttribute("class","content-tab");
+
+  newLi.appendChild(newDivContent);
+  newLi.appendChild(newLabel);
+  newLi.appendChild(newInput);
+  ulTab.appendChild(newLi);
+}
+contentTabs.appendChild(ulTab);
+
+
+headerLogin.appendChild(divLogin);
+mainContent.appendChild(titleMain);
