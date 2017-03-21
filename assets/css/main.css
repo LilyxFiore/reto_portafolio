@@ -57,15 +57,6 @@ body, html{
   margin: 18px 18px 0px 0px;
 }
 
-.content-left article p a{
-  padding-right: 5px;
-  padding-left: 5px;
-  color: black;
-}
-.content-left article p{
-  color: black;
-}
-
 .remove{
   border-radius: 7px;
   text-decoration: none;
@@ -107,6 +98,10 @@ body, html{
   text-decoration: underline;
 }
 
+.login .sign-out img{
+  width: 14px;
+  height: 10px;
+}
 .title-main{
   position: absolute;
   margin-top: -15px;
@@ -117,22 +112,70 @@ body, html{
 }
 
 /*popup for add Text of Resources*/
+/* El tooltip */
 .tool-tip {
- width: 500px;
- position: relative;
- background: #E0EDD4 center left 5px no-repeat;
- border: 2px solid black ;
- border-radius: 5px;
- color: black ;
- display: none;
- font-size: 0.8em;
- padding: 10px 10px 10px 35px;
- max-width: 6000px;
- top: 89px;
- left: 51px;
- z-index: 3;
+  position: relative;
+  display: block;
 }
 
+.tool-tip_resource span a, .tool-tip_resource span{
+  cursor: pointer;
+  display: inline-block;
+  color: black;
+}
+
+.tool-tip .tool-tip_info {
+  display: none;
+  position: absolute;
+  width: 490px;
+  background-color: #E0EDD4;
+  padding: 5px 10px;
+  border-radius: 10px;
+  top: 100%;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: 10px;
+  border: 2px solid #553D00;
+  z-index: 1;
+}
+
+.tool-tip .tool-tip_info:before, .tool-tip .tool-tip_info:after {
+  content: "";
+  position: absolute;
+  left: 50%  ;
+  bottom: 100%;
+  margin-left: -226px;
+  border-width: 12px;
+  border-style: solid;
+  border-color: transparent transparent #553D00 transparent;
+}
+
+.tool-tip .tool-tip_info:after {
+  left: 50.8%;
+  border-bottom-color: #E0EDD4;
+  border-width: 8px;
+}
+.tool-tip .tool-tip_info .info {
+  display: block;
+}
+.tool-tip .tool-tip_info .info_title {
+  color: #364E64;
+}
+.tool-tip:hover .tool-tip_info, .tool-tip:focus .tool-tip_info {
+  display: inline-block;
+}
+
+.tool-tip_resource span a, .tool-tip_resource span{
+  padding-right: 5px;
+  padding-left: 5px;
+  color: black;
+}
+
+.tool-tip_resource .tool-tip-span{
+  padding-right: 0px;
+  padding-left: 0px;
+  color: black;
+}
 /*tabs and content agents*/
 .tab input.headboards{
 	position: absolute;

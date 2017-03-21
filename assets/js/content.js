@@ -15,54 +15,50 @@ window.addEventListener('load',function(){
     addArticle(i,color);
   })
 
-  function addPopup(contentArticle){
+  function addPopup(toolTip,toolTipResource){
     var texto="";
-    var popUp = document.createElement("div");
-    popUp.setAttribute("class","tool-tip");
+    var toolTipInfo = document.createElement("div");
+    toolTipInfo.setAttribute("class","tool-tip_info");
 
-    var sPopUp = document.createElement("span");
-    sPopUp.innerHTML = "(Separate multiple resources name with commas) </br>";
-    popUp.appendChild(sPopUp);
+    var sToolTip = document.createElement("span");
+    sToolTip.setAttribute("class","info_title");
+    sToolTip.innerHTML = "(Separate multiple resources name with commas) </br>";
+    toolTipInfo.appendChild(sToolTip);
 
-    var iPopUp = document.createElement("input");
-    iPopUp.setAttribute("id","popUpText");
-    iPopUp.setAttribute("type","text");
-    iPopUp.style.width = "470px";
-    iPopUp.innerHTML = "</br>";
+    var iToolTip = document.createElement("input");
+    iToolTip.setAttribute("id","toolTipText");
+    iToolTip.setAttribute("type","text");
+    iToolTip.style.width = "470px";
+    iToolTip.innerHTML = "</br>";
 
-    popUp.style.display = "block";
+    toolTipInfo.style.display = "block";
 
-    popUp.appendChild(iPopUp);
+    sToolTip.appendChild(iToolTip);
 
     var addButtonResource = document.createElement("button");
     addButtonResource.setAttribute("id","add");
     addButtonResource.setAttribute("type","button");
     addButtonResource.innerHTML= "Add resources";
-    popUp.appendChild(addButtonResource);
+    toolTipInfo.appendChild(addButtonResource);
 
-
-
-    var closePopUp = document.createElement("button");
-    closePopUp.setAttribute("id","close");
-    closePopUp.setAttribute("type","button");
-    closePopUp.innerHTML= "Close";
+    var closeToolTip = document.createElement("button");
+    closeToolTip.setAttribute("id","close");
+    closeToolTip.setAttribute("type","button");
+    closeToolTip.innerHTML= "Close";
+    toolTipInfo.appendChild(closeToolTip);
 
     addButtonResource.addEventListener('click',function(e){
       e.preventDefault();
-      console.log(contentArticle);
-      popUp.style.left = "55px";
-      console.log(popUp.style.left);
-      addResource(contentArticle,iPopUp.value);
-      popUp.style.display = "none";
+      addResource(toolTipResource,iToolTip.value);
+      toolTipInfo.style.display = "none";
     });
 
-    closePopUp.addEventListener('click',function(e){
+    closeToolTip.addEventListener('click',function(e){
       e.preventDefault();
-      popUp.style.display = "none";
+      toolTipInfo.style.display = "none";
     });
 
-    popUp.appendChild(closePopUp);
-    contentArticle.appendChild(popUp);
+    toolTip.appendChild(toolTipInfo);
     return texto;
   }
 
@@ -79,23 +75,33 @@ window.addEventListener('load',function(){
     var headerArticle = document.createElement("h4");
     headerArticle.innerHTML = arrHeaders[index];
 
-    var contentArticle = document.createElement("p");
-    contentArticle.innerHTML="+";
+    var toolTip = document.createElement("div");
+    toolTip.setAttribute("class","tool-tip");
+
+    var toolTipResource = document.createElement("div");
+    toolTipResource.setAttribute("class","tool-tip_resource")
+    toolTip.appendChild(toolTipResource);
+
+    var sToolTipResource = document.createElement("span");
+    sToolTipResource.setAttribute("class","tool-tip-span");
+    sToolTipResource.innerHTML="+";
+    toolTipResource.appendChild(sToolTipResource);
+
     var aSpecify = document.createElement("a");
     aSpecify.href="#";
     aSpecify.innerHTML="Specify Resources";
-    contentArticle.appendChild(aSpecify);
+    sToolTipResource.appendChild(aSpecify);
+
     var tXtResource = document.createElement("span");
     tXtResource.innerHTML = "| Resources";
-    contentArticle.appendChild(tXtResource);
-
+    toolTipResource.appendChild(tXtResource);
     aSpecify.addEventListener("click", function(e){
       e.preventDefault();
-      addPopup(contentArticle);
+      addPopup(toolTip,toolTipResource);
     });
 
     article.appendChild(headerArticle);
-    article.appendChild(contentArticle);
+    article.appendChild(toolTip);
     sectionContent.appendChild(circle);
     sectionContent.appendChild(article);
     sectionLeft.appendChild(sectionContent);
@@ -103,7 +109,7 @@ window.addEventListener('load',function(){
 
   }
 
-  function addResource(contentArticle,texto){
+  function addResource(toolTipResource,texto){
     var arrayTexto = texto.split(",");
     arrayTexto.forEach(function(e,i){
       if(e != ""){
@@ -114,18 +120,18 @@ window.addEventListener('load',function(){
 
         aRemove.addEventListener('click',function(e) {
           e.preventDefault();
-          deleteResource(contentArticle,span);
+          deleteResource(toolTipResource,span);
         });
 
         span.innerHTML = e;
-        contentArticle.appendChild(span);
+        toolTipResource.appendChild(span);
         span.appendChild(aRemove);
       }
     });
   }
 
-  function deleteResource(contentArticle,span){
-    contentArticle.removeChild(span);
+  function deleteResource(toolTipResource,span){
+    toolTipResource.removeChild(span);
   }
 
 });
